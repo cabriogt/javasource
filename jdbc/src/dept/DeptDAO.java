@@ -63,9 +63,8 @@ public class DeptDAO {
 					pstmt.close();
 					con.close();
 				}catch (Exception e2) {
-					e2.printStackTrace()
-				}
-				
+					e2.printStackTrace();
+				}				
 			}
 			return list;
 		}
@@ -86,7 +85,7 @@ public class DeptDAO {
 				
 				if(rs.next()) {
 					dto = new DeptDTO();
-					dto.setDeptNO(rs.getInt(l));
+					dto.setDeptNo(rs.getInt(1));
 					dto.setDname(rs.getString(2));
 					dto.setLoc(rs.getString(3));
 				}
@@ -107,7 +106,7 @@ public class DeptDAO {
 			
 		}
 		
-		public boolean insert() {
+		public boolean insert(DeptDTO dto) {
 			
 			boolean flag = false;
 			
@@ -120,7 +119,7 @@ public class DeptDAO {
 				String sql = "insert into dept_temp(deptno,dname,loc) values(?,?,?)";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1,dto.getDeptNo());
-				pstmt.setStringt(2,dto.getDname());
+				pstmt.setString(2,dto.getDname());
 				pstmt.setString(3,dto.getLoc());
 				int result = pstmt.executeUpdate();
 				if (result>0) {
@@ -135,14 +134,14 @@ public class DeptDAO {
 					pstmt.close();
 					con.close();
 				}catch (Exception e2) {
-					e2.printStackTrace()
+					e2.printStackTrace();
 				}
 				
 			}
 			return flag;
 		}
 		
-		public boolean update(String dname, int deptNO) {
+		public boolean update(String dname, int deptNo) {
 			
 			Connection con= null;
 			PreparedStatement pstmt = null;
@@ -182,7 +181,7 @@ public class DeptDAO {
 		public boolean delete(int deptNo) {
 			Connection con = null;
 			PreparedStatement pstmt = null;
-			boolean Flag = false;
+			boolean deleteFlag = false;
 		
 			try {
 				con = getConnection();
@@ -207,11 +206,11 @@ public class DeptDAO {
 					e2.printStackTrace();
 				}
 			}
-			return Flag;
+			return deleteFlag;
 		
 		
 		
-		
+		}
 	
 	
 	
