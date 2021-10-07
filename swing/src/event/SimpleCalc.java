@@ -7,9 +7,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
 import layout.BorderLayoutTest1;
 
 public class SimpleCalc extends JFrame implements ActionListener {
@@ -66,12 +66,36 @@ public class SimpleCalc extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
 		String cmd = e.getActionCommand();
+		
+		
+		
+		
+		
 		if (cmd.equals("ok")) {
-			int op1=Integer.parseInt(num1.getText());
-			int op2=Integer.parseInt(num1.getText());
-			int total = op1 + op2;
-			result.setText(String.valueOf(total));
+			
+			try {
+				
+				int op1=Integer.parseInt(num1.getText());
+				int op2=Integer.parseInt(num2.getText());
+				int total = op1 + op2;
+				result.setText(String.valueOf(total));
+				
+			} catch (Exception e2) {
+				
+				//e2.printStackTrace();
+				
+				
+				JOptionPane.showMessageDialog(getParent(),"check your input value");
+				
+			}
+			
+			
+			
+			
+			
+			
 		}else {
 			num1.setText(" ");
 			num2.setText(" ");
